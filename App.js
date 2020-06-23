@@ -15,9 +15,8 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import { VictoryBar, VictoryChart, VictoryTooltip, VictoryPie, VictoryTheme } from 'victory-native';
-import CustomLabel from './custom_label_component';
 import Svg from "react-native-svg";
+import CustomChartComponent from "./custom_chart_component";
 
 const data = [
   { quarter: 1, earnings: 13000 },
@@ -52,28 +51,8 @@ const App: () => React$Node = () => {
             <View style={styles.container}>
               <Svg width={400} height={400} viewBox="0 0 400 400"
                      style={{ width: "100%", height: "auto" }}>
-                <VictoryPie
-                  style={{ labels: { fill: "white" } }}
-                  innerRadius={100}
-                  labelRadius={110}
-                  labels={({ datum }) => `# ${datum.y}`}
-                  labelComponent={<CustomLabel renderInPortal={false}/>}
-                  data={[
-                    { x: 1, y: 5 },
-                    { x: 2, y: 4 },
-                    { x: 3, y: 2 },
-                    { x: 4, y: 3 },
-                    { x: 5, y: 1, label: "test" }
-                  ]} 
-                events={[{
-                  target: "data",
-                  eventHandlers: {
-                    onPressIn: () => {
-                      alert("click");
-                    }
-                  }
-                }]}
-                />
+
+                <CustomChartComponent />
               </Svg>
             </View>
             

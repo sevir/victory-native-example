@@ -5,22 +5,30 @@ import Svg, { G } from "react-native-svg";
 class CustomLabel extends Component {
   render() {
     return (
-        <G renderInPortal={false}>
+        <G>
             <VictoryLabel {...this.props} />
             <VictoryTooltip
             {...this.props}
             {...this.defaultEvents}
+            
             active={true}
-            activateData={true}
-                events={{ onPressIn: (evt) => alert("x: jh") }}
-            x={200}
-            y={250}
+                
+            events={{ onPressIn: (evt) => {
+              console.log(evt); alert("click tooltip");
+              return [
+                { target: "labels", mutation: () => ({ active: true }) },
+                { target: "data", mutation: () => ({ active: true }) }
+              ];
+            } }}
+            x={197}
+            y={274}
             orientation="top"
             pointerLength={0}
-            cornerRadius={50}
-            flyoutWidth={100}
-            flyoutHeight={100}
+            cornerRadius={75}
+            flyoutWidth={150}
+            flyoutHeight={150}
             flyoutStyle={{fill: 'black'}}
+            renderInPortal={false}
             />
         </G>
     );
